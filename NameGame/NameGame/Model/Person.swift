@@ -54,7 +54,7 @@ struct Person : Codable, Equatable, Hashable {
         
         //MARK: - Load Image
         func getPersonImage() -> UIImage? {
-            if let us = self.url, let u = URL(string: "https://images.ctfassets.net/3cttzl4i3k1h/2NXl6pRtmUegGuwm0GquI8/99e81523931a91bc9ccc68df33d2bdad/IMG_20161221_135602.jpg") {
+            if let us = self.url, let u = URL(string: "https:"+us) {
                 do {
                     let data = try Data(contentsOf: u)
                     return UIImage(data: data)

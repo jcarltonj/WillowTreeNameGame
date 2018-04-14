@@ -13,6 +13,7 @@ open class FaceButton: UIButton {
 
     var id: Int = 0
     var tintView: UIView = UIView(frame: CGRect.zero)
+    var colorView: UIView = UIView()
     var person: Person?
 
     override init(frame: CGRect) {
@@ -26,10 +27,11 @@ open class FaceButton: UIButton {
     }
 
     func setup() {
+        
         setTitleColor(.white, for: .normal)
         titleLabel?.alpha = 0.0
 
-        tintView.alpha = 0.0
+        
         tintView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(tintView)
 
@@ -37,13 +39,20 @@ open class FaceButton: UIButton {
         tintView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         tintView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         tintView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        tintView.isUserInteractionEnabled = false
+        
     }
 
     //MARK: - Person Helpers
     func setPerson(person p: Person) {
         self.person = p
         DispatchQueue.main.async {
-            self.setBackgroundImage(self.person?.headshot?.getPersonImage(), for: .normal)
+            self.imageView?.clipsToBounds = true
+            self.imageView?.contentMode = .scaleAspectFill
+            self.contentMode = .scaleAspectFill
+            self.clipsToBounds = true
+            self.setImage(self.person?.headshot?.getPersonImage(), for: .normal)
             
         }
         
@@ -59,16 +68,10 @@ open class FaceButton: UIButton {
         setToColor(color: color)
     }
     func clearAnswer() {
-        setToColor(color:UIColor.clear)
+        setToColor(color: UIColor.clear)
     }
     private func setToColor(color: UIColor) {
-        let rect = CGRect(origin: .zero, size: self.frame.size)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-        color.setFill()
-        UIRectFill(rect)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-       self.setImage(image, for: .normal)
+        tintView.backgroundColor = color
+        print(person!.firstName!)
     }
 }

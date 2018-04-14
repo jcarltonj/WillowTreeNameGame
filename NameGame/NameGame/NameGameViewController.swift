@@ -36,6 +36,7 @@ class NameGameViewController: UIViewController {
             return
         }
         let answer = self.nameGame.checkAnswer(person: person)
+        print(person.headshot!.url!)
     }
 
     func configureSubviews(_ orientation: UIDeviceOrientation) {
