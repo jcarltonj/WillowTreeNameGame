@@ -13,6 +13,7 @@ open class FaceButton: UIButton {
 
     var id: Int = 0
     var tintView: UIView = UIView(frame: CGRect.zero)
+    var person: Person?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,5 +39,36 @@ open class FaceButton: UIButton {
         tintView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 
-    // TODO: Show the user's face on the button.
+    //MARK: - Person Helpers
+    func setPerson(person p: Person) {
+        self.person = p
+        DispatchQueue.main.async {
+            self.setBackgroundImage(self.person?.headshot?.getPersonImage(), for: .normal)
+            
+        }
+        
+    }
+    func setAnswer(isCorrect: Bool) {
+        var color = UIColor()
+        if isCorrect {
+            color = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.5)
+        }
+        else {
+            color = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        }
+        setToColor(color: color)
+    }
+    func clearAnswer() {
+        setToColor(color:UIColor.clear)
+    }
+    private func setToColor(color: UIColor) {
+        let rect = CGRect(origin: .zero, size: self.frame.size)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        color.setFill()
+        UIRectFill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+       self.setImage(image, for: .normal)
+    }
 }
