@@ -41,6 +41,7 @@ class PreviewPersonViewController: UIViewController {
         if let i = image {
             personImage.image = i
         }
+        //Set to blank string to clear for no name or job title cases
         name.text = ""
         job.text = ""
         if let fN = self.person?.firstName {

@@ -19,6 +19,7 @@
 		FC8D2A422082BACB007D930D /* PreviewPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A412082BACB007D930D /* PreviewPersonViewController.swift */; };
 		FC8D2A442082ED68007D930D /* GameModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A432082ED68007D930D /* GameModeTableViewController.swift */; };
 		FC8D2A462082F166007D930D /* NameGameTeamMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A452082F166007D930D /* NameGameTeamMode.swift */; };
+		FC8D2A4820830170007D930D /* MattNameGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A4720830170007D930D /* MattNameGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		FC8D2A412082BACB007D930D /* PreviewPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreviewPersonViewController.swift; path = ViewControllers/PreviewPersonViewController.swift; sourceTree = "<group>"; };
 		FC8D2A432082ED68007D930D /* GameModeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameModeTableViewController.swift; path = ViewControllers/GameModeTableViewController.swift; sourceTree = "<group>"; };
 		FC8D2A452082F166007D930D /* NameGameTeamMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGameTeamMode.swift; sourceTree = "<group>"; };
+		FC8D2A4720830170007D930D /* MattNameGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MattNameGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +81,7 @@
 				FC8D2A412082BACB007D930D /* PreviewPersonViewController.swift */,
 				EC6A1AB61C8F6E5A0071F529 /* AppDelegate.swift */,
 				EC6A1AB81C8F6E5A0071F529 /* NameGameViewController.swift */,
-				03CE45601DD1302700ABF7FA /* NameGame.swift */,
-				FC8D2A452082F166007D930D /* NameGameTeamMode.swift */,
+				FC8D2A492083017C007D930D /* NameGame */,
 				FC8D2A3E2082557E007D930D /* Model */,
 				0390A0101DDE529600C701A0 /* Views */,
 				EC6A1ABA1C8F6E5A0071F529 /* Main.storyboard */,
@@ -99,6 +100,16 @@
 				FC8D2A3F208255FF007D930D /* PeopleManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FC8D2A492083017C007D930D /* NameGame */ = {
+			isa = PBXGroup;
+			children = (
+				03CE45601DD1302700ABF7FA /* NameGame.swift */,
+				FC8D2A4720830170007D930D /* MattNameGame.swift */,
+				FC8D2A452082F166007D930D /* NameGameTeamMode.swift */,
+			);
+			path = NameGame;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +191,7 @@
 				03CE45611DD1302700ABF7FA /* NameGame.swift in Sources */,
 				FC8D2A40208255FF007D930D /* PeopleManager.swift in Sources */,
 				FC8D2A422082BACB007D930D /* PreviewPersonViewController.swift in Sources */,
+				FC8D2A4820830170007D930D /* MattNameGame.swift in Sources */,
 				FC8D2A442082ED68007D930D /* GameModeTableViewController.swift in Sources */,
 				ECF50AB51C9331CA00C41A1D /* FaceButton.swift in Sources */,
 				FC8D2A462082F166007D930D /* NameGameTeamMode.swift in Sources */,

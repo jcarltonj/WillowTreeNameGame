@@ -1,5 +1,5 @@
 //
-//  NameGameTeamMode.swift
+//  MattNameGame.swift
 //  NameGame
 //
 //  Created by Carlton Jester on 4/14/18.
@@ -7,17 +7,17 @@
 //
 
 import Foundation
-
-class NameGameTeamMode: NameGame {
+class MattNameGame: NameGame {
     lazy var teamModeList: [Person] = {
         return peopleManager.localPeople.filter({ (p) -> Bool in
-            return p.jobTitle != nil
+            if let fN = p.firstName {
+                return fN.starts(with:"Mat")
+            }
+            return false
+            
         })
     }()
     override func getListOfPeopleToUse() -> [Person] {
-        for i in teamModeList {
-            print(i.jobTitle)
-        }
         return teamModeList
     }
 }

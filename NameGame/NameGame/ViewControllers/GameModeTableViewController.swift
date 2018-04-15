@@ -10,7 +10,7 @@ import UIKit
 
 class GameModeTableViewController: UITableViewController {
 
-    let gameModes = ["Regular", "Force Touch/Long Press Help", "Team Mode"]
+    let gameModes = ["Regular", "Reg Force Touch/Long Press Help", "Team Mode", "Team Help", "Mat(t)", "Mat(t) Help"]
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -49,7 +49,17 @@ class GameModeTableViewController: UITableViewController {
             case 1:
                 dest.learnModeIsOn = true
             case 2:
-                dest.nameGame = NameGameTeamMode()
+                dest.nameGame = TeamModeNameGame()
+                dest.learnModeIsOn = false
+            case 3:
+                dest.nameGame = TeamModeNameGame()
+                dest.learnModeIsOn = true
+            case 4:
+                dest.nameGame = MattNameGame()
+                dest.learnModeIsOn = false
+            case 5:
+                dest.nameGame = MattNameGame()
+                dest.learnModeIsOn = true
             default:
                 break
                 

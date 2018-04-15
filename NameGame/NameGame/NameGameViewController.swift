@@ -17,8 +17,10 @@ class NameGameViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var imageButtons: [FaceButton]!
     
+    //Name Game instance
     var nameGame = NameGame()
     
+    //Set for peek and pop to be on or off so users can decide to use learn mode or not
     var learnModeIsOn = false
     
 
@@ -29,17 +31,17 @@ class NameGameViewController: UIViewController {
         configureSubviews(orientation)
         setupPeekPop()
         nameGame.delegate = self
-        nameGame.loadGameData {}
+        nameGame.loadGameData()
         
         
     }
-
     @IBAction func faceTapped(_ button: FaceButton) {
+        //if selection is enabled
         if nameGame.canPlay {
             guard let person = button.person else {
                 return
             }
-            let _ = self.nameGame.checkAnswer(person: person) //in case I want to use this later
+            let _ = self.nameGame.checkAnswer(person: person) //in case I want to use this later allowing to keep bool
         }
     }
 
@@ -73,10 +75,21 @@ extension NameGameViewController: NameGameDelegate {
         }
     }
     func setupNewTurn(completion: @escaping () -> Void) {
+        //Set buttons to load while waiting for the remote images to load
         setLoadingButtons()
-        if let firstName = self.nameGame.answer?.firstName, let lastName = self.nameGame.answer?.lastName {
-            DispatchQueue.main.async {
-                self.questionLabel.text = "Who is " + firstName + " " + lastName + "?"
+        //If first name and last name are set then set the question label and checks the case of no last name
+        DispatchQueue.main.async {
+            self.questionLabel.text = "Who is"
+            if let firstName = self.nameGame.answer?.firstName, let text = self.questionLabel.text {
+                self.questionLabel.text = text + " " + firstName
+            }
+            if let lastName = self.nameGame.answer?.lastName, let text = self.questionLabel.text{
+                self.questionLabel.text = text + " " + lastName + "?"
+            }
+            else {
+                if let text = self.questionLabel.text {
+                    self.questionLabel.text = text + "?"
+                }
             }
         }
         for i in 0..<imageButtons.count {
