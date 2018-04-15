@@ -32,8 +32,8 @@ class NameGame {
         delegate = del
     }
     // Load JSON data from API
-    func loadGameData() {
-        peopleManager.getPeople(){
+    func loadGameData(completion: @escaping ([Person]) -> Void ) {
+        peopleManager.getPeople { (people) in
             self.setupNewTurn()
         }
     }

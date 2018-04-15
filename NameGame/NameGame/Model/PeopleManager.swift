@@ -8,7 +8,9 @@
 
 import Foundation
 class PeopleManager {
+    //cache file name
     fileprivate let fileName: String = "people.json"
+    //save and get contacts from a file
     var localPeople: [Person] {
         get {
             return self.decodePeople(data: self.readFromFile())
@@ -17,7 +19,7 @@ class PeopleManager {
             self.writeToFile(contents: self.encodePeople(people: newPeople))
         }
     }
-    
+    //decode people from json
     func decodePeople(data: Data) -> [Person] {
         
         let jsonDecoder = JSONDecoder()
@@ -29,6 +31,7 @@ class PeopleManager {
         }
         return []
     }
+    //encode people to json
     func encodePeople(people: [Person]) -> Data {
         let  jsonEncoder = JSONEncoder()
         do {
@@ -43,6 +46,7 @@ class PeopleManager {
 }
 //MARK: - Local Store
 extension PeopleManager {
+    //write json to a file
     fileprivate func writeToFile(contents data: Data) {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent(self.fileName)
@@ -54,6 +58,7 @@ extension PeopleManager {
             }
         }
     }
+    //read json from a file
     fileprivate func readFromFile() -> Data {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent(self.fileName)
@@ -70,25 +75,27 @@ extension PeopleManager {
 
 //MARK: - REST
 extension PeopleManager {
-    func getPeople(completion: @escaping () -> Void ) {
+    //get people from API
+    func getPeople(completion: @escaping ([Person]) -> Void ) {
         guard let request = getRequest(path: "profiles", andRequestType: "GET") else {
             return
         }
         let session = URLSession.shared
-        
+        //run and pass completion handler, data is stored in the class
         session.dataTask(with: request) { (data, response, error) in
             guard let d = data else {
                 return
             }
             let people = self.decodePeople(data: d)
             self.localPeople = people
-            completion()
+            completion(people)
         }.resume()
         
         
     }
     
     //MARK: - Helpers
+    //get request
     private func getRequest(path: String, andRequestType type: String) -> URLRequest? {
         guard let url =  URL(string: "https://willowtreeapps.com/api/v1.0/"+path) else {
             print("Error: URL invalid")

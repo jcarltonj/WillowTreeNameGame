@@ -47,16 +47,18 @@ open class FaceButton: UIButton {
     //MARK: - Person Helpers
     func setPerson(person p: Person) {
         self.person = p
+        //setup views
         DispatchQueue.main.async {
             self.imageView?.clipsToBounds = true
             self.imageView?.contentMode = .scaleAspectFill
-            self.contentMode = .scaleAspectFill
             self.clipsToBounds = true
+            self.contentMode = .scaleAspectFill
             self.setImage(self.person?.headshot?.getPersonImage(), for: .normal)
-            
         }
         
     }
+    //MARK: - Set tint colors
+    //set to green or red layover
     func setAnswer(isCorrect: Bool) {
         var color = UIColor()
         if isCorrect {
@@ -67,9 +69,11 @@ open class FaceButton: UIButton {
         }
         setToColor(color: color)
     }
+    //clear layovers
     func clearAnswer() {
         setToColor(color: UIColor.clear)
     }
+    //MARK: - Helpers
     private func setToColor(color: UIColor) {
         tintView.backgroundColor = color
     }

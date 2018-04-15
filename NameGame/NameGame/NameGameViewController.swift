@@ -31,7 +31,7 @@ class NameGameViewController: UIViewController {
         configureSubviews(orientation)
         setupPeekPop()
         nameGame.delegate = self
-        nameGame.loadGameData()
+        nameGame.loadGameData { (people) in return } //don't need to do anything with this data now as it is stored in the cache
         
         
     }
@@ -92,9 +92,11 @@ extension NameGameViewController: NameGameDelegate {
                 }
             }
         }
+        //set image buttons to the remote images
         for i in 0..<imageButtons.count {
             imageButtons[i].setPerson(person: nameGame.currentTurnList[i])
         }
+        //run completion handler
         completion()
     }
     //MARK: - Helpers
@@ -112,6 +114,7 @@ extension NameGameViewController: NameGameDelegate {
 //MARK: - Peek and Pop
 extension NameGameViewController: UIViewControllerPreviewingDelegate {
     func setupPeekPop() {
+        //If in learn mode set up peek and pop and also add long press
         if learnModeIsOn {
             let gr = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognizer(gestureRecognizer:)))
             self.view.addGestureRecognizer(gr)
@@ -120,32 +123,33 @@ extension NameGameViewController: UIViewControllerPreviewingDelegate {
             }
         }
     }
+    //determine which button was pressed based on the location of the force touch
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         for button in imageButtons {
-            
+            //need to convert the coordinates
             let frame = button.convert(button.bounds, to: self.view) //convert the bounds of a
             
             if frame.contains(location) {
                 let image = button.imageView?.image
-                
                 return getViewControllerForPerson(person: button.person, image: image)
             }
         }
         return nil
     }
-    
+    //navigate to the next view
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
     }
     
     //MARK: - Helpers
+    //get and setup view controller
     func getViewControllerForPerson(person: Person?, image: UIImage?) -> UIViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PreviewPerson") as! PreviewPersonViewController
         vc.setupPerson(person: person, image: image)
         return vc
         
     }
-    
+    //long press setup and figure out the correct button that was tapped just like the 
     @objc
     func longPressGestureRecognizer(gestureRecognizer gr: UILongPressGestureRecognizer) {
         if gr.state == .began {
