@@ -38,33 +38,32 @@ class GameModeTableViewController: UITableViewController {
 
         return cell
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = tableView.indexPathForSelectedRow, let dest = segue.destination as? NameGameViewController else {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let indexPath = tableView.indexPathForSelectedRow, let dest = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NameGame") as? NameGameViewController else {
             return
         }
         switch indexPath.row {
-            case 0:
-                dest.learnModeIsOn = false
-            case 1:
-                dest.learnModeIsOn = true
-            case 2:
-                dest.nameGame = TeamModeNameGame()
-                dest.learnModeIsOn = false
-            case 3:
-                dest.nameGame = TeamModeNameGame()
-                dest.learnModeIsOn = true
-            case 4:
-                dest.nameGame = MattNameGame()
-                dest.learnModeIsOn = false
-            case 5:
-                dest.nameGame = MattNameGame()
-                dest.learnModeIsOn = true
-            default:
-                break
-                
+        case 0:
+            dest.learnModeIsOn = false
+        case 1:
+            dest.learnModeIsOn = true
+        case 2:
+            dest.nameGame = TeamModeNameGame()
+            dest.learnModeIsOn = false
+        case 3:
+            dest.nameGame = TeamModeNameGame()
+            dest.learnModeIsOn = true
+        case 4:
+            dest.nameGame = MattNameGame()
+            dest.learnModeIsOn = false
+        case 5:
+            dest.nameGame = MattNameGame()
+            dest.learnModeIsOn = true
+        default:
+            break
         }
+        self.navigationController?.pushViewController(dest, animated: true)
     }
- 
 
 }
