@@ -72,6 +72,5 @@ open class FaceButton: UIButton {
     }
     private func setToColor(color: UIColor) {
         tintView.backgroundColor = color
-        print(person!.firstName!)
     }
 }

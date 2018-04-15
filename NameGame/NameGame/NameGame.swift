@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NameGameDelegate: class {
-    func setupNewTurn()
+    func setupNewTurn(completion: @escaping () -> Void)
     func setAnswer(check:(Person?)->Bool)
 }
 
@@ -24,6 +24,8 @@ class NameGame {
     var currentTurnList: [Person] = []
     
     var answer: Person?
+    
+    var canPlay = true
 
     init(delegate del: NameGameDelegate? = nil) {
         delegate = del
@@ -34,10 +36,15 @@ class NameGame {
             self.setupNewTurn()
         }
     }
+    func getListOfPeopleToUse() -> [Person] {
+        return peopleManager.localPeople
+    }
     @objc func setupNewTurn() {
-        addPeopleToTurnFromList(list: peopleManager.localPeople)
+        addPeopleToTurnFromList(list: getListOfPeopleToUse())
         selectAnswer()
-        delegate?.setupNewTurn()
+        delegate?.setupNewTurn(completion: {
+            self.canPlay = true
+        })
         
     }
     func selectAnswer() {
@@ -46,11 +53,13 @@ class NameGame {
     func addPeopleToTurnFromList(list: [Person]) {
         var indexes = Set<Int>()
         currentTurnList = []
-        while indexes.count != numberPeople { //avoid the case where one
-            indexes.insert(Int(arc4random_uniform(UInt32(peopleManager.localPeople.count))))
+        while indexes.count != numberPeople { //avoid the case where you get the same number
+            indexes.insert(Int(arc4random_uniform(UInt32(list.count))))
         }
         for i in indexes {
-            currentTurnList.append(peopleManager.localPeople[i])
+            let p = list[i]
+            currentTurnList.append(p)
+            
         }
     }
     func checkAnswer(person: Person) -> Bool{
@@ -61,14 +70,13 @@ class NameGame {
                 delegate?.setAnswer(){test in
                     return answer == test
                 }
+                canPlay = false
                 Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(setupNewTurn), userInfo: nil, repeats: false)
             }
             if ansBool {
-                print("true")
                 return true
             }
             else {
-                print("false")
                 return false
             }
         }

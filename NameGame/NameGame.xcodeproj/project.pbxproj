@@ -16,6 +16,9 @@
 		ECF50AB51C9331CA00C41A1D /* FaceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF50AB41C9331CA00C41A1D /* FaceButton.swift */; };
 		FC8D2A3C208251FC007D930D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A3B208251FC007D930D /* Person.swift */; };
 		FC8D2A40208255FF007D930D /* PeopleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A3F208255FF007D930D /* PeopleManager.swift */; };
+		FC8D2A422082BACB007D930D /* PreviewPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A412082BACB007D930D /* PreviewPersonViewController.swift */; };
+		FC8D2A442082ED68007D930D /* GameModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A432082ED68007D930D /* GameModeTableViewController.swift */; };
+		FC8D2A462082F166007D930D /* NameGameTeamMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A452082F166007D930D /* NameGameTeamMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		ECF50AB41C9331CA00C41A1D /* FaceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceButton.swift; sourceTree = "<group>"; };
 		FC8D2A3B208251FC007D930D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		FC8D2A3F208255FF007D930D /* PeopleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleManager.swift; sourceTree = "<group>"; };
+		FC8D2A412082BACB007D930D /* PreviewPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreviewPersonViewController.swift; path = ViewControllers/PreviewPersonViewController.swift; sourceTree = "<group>"; };
+		FC8D2A432082ED68007D930D /* GameModeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameModeTableViewController.swift; path = ViewControllers/GameModeTableViewController.swift; sourceTree = "<group>"; };
+		FC8D2A452082F166007D930D /* NameGameTeamMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGameTeamMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,12 +76,15 @@
 		EC6A1AB51C8F6E5A0071F529 /* NameGame */ = {
 			isa = PBXGroup;
 			children = (
+				FC8D2A412082BACB007D930D /* PreviewPersonViewController.swift */,
 				EC6A1AB61C8F6E5A0071F529 /* AppDelegate.swift */,
 				EC6A1AB81C8F6E5A0071F529 /* NameGameViewController.swift */,
 				03CE45601DD1302700ABF7FA /* NameGame.swift */,
+				FC8D2A452082F166007D930D /* NameGameTeamMode.swift */,
 				FC8D2A3E2082557E007D930D /* Model */,
 				0390A0101DDE529600C701A0 /* Views */,
 				EC6A1ABA1C8F6E5A0071F529 /* Main.storyboard */,
+				FC8D2A432082ED68007D930D /* GameModeTableViewController.swift */,
 				EC6A1ABD1C8F6E5A0071F529 /* Assets.xcassets */,
 				EC6A1AC21C8F6E5A0071F529 /* Info.plist */,
 				03909FDF1DDE4ACE00C701A0 /* LaunchScreen.storyboard */,
@@ -170,7 +179,10 @@
 				EC6A1AB71C8F6E5A0071F529 /* AppDelegate.swift in Sources */,
 				03CE45611DD1302700ABF7FA /* NameGame.swift in Sources */,
 				FC8D2A40208255FF007D930D /* PeopleManager.swift in Sources */,
+				FC8D2A422082BACB007D930D /* PreviewPersonViewController.swift in Sources */,
+				FC8D2A442082ED68007D930D /* GameModeTableViewController.swift in Sources */,
 				ECF50AB51C9331CA00C41A1D /* FaceButton.swift in Sources */,
+				FC8D2A462082F166007D930D /* NameGameTeamMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
