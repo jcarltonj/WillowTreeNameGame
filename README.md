@@ -1,22 +1,22 @@
 # The Namegame: iOS
 
-Leading scientists have proven, via science, that learning your coworkers names while starting a new job is useful. Your test project is to make it happen! The api is located at [https://willowtreeapps.com/api/v1.0/profiles/](https://willowtreeapps.com/api/v1.0/profiles/).
+This is a simple name game to learn the names of the current and past WillowTree employees.
 
 
-## Your mission
+## Implemented Features
 
-Present the user with six faces and ask them to identify the listed name. To spruce things up, implement a few features of your choice.
+1. Regular game mode
+2. Help mode, allows the user to force touch (if available) or long press to see the full contact information of the employee
+3. Matt mode, play with just users named Matt, Mat, Matthew...etc (anything beginning with Mat)
+4. Team mode, play with only users that have job titles
+5. Matt Help mode
+6. Team Help mode
+7. Launch from home screen quick action to regular mode (if force touch is available)
+8. Launch from homescreen quick action to regular help mode (if force touch is available)
+9. In addition the names are cached on the device which later on could be used to display a contact list offline
 
-1. Stat tracking. How many correct / incorrect attempts did the user make? How long does it take on average for a person to identify the subject?
-2. Spruce up transitions and image loading.  Don't let images pop in and show the user that loading is happening
-3. Game modes:
-    * Mat(t) Mode. Roughly 90% of our co-workers are named Mat(t), so add a challenge mode where you only present the users with A Mat(t).
-    * Reverse mode: Show one face with 5 names. Ask the user to identify the correct name.
-4. Hint mode. As people wait, faces disappear until only the correct one is left.
-5. Team mode. The api returns people who used to work here too. Current team members have titles and former team members don't.
-5. Insert your own idea here!
 
 
 ## Conclusion
 
-We have provided you with a skeleton to get you started.
+If you have any questions feel free to contact me at: 781-974-6425 or jcarltonj@gmail.com

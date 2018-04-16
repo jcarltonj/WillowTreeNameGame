@@ -9,8 +9,16 @@
 import UIKit
 
 class GameModeTableViewController: UITableViewController {
-
-    let gameModes = ["Regular", "Reg Force Touch/Long Press Help", "Team Mode", "Team Help", "Mat(t)", "Mat(t) Help"]
+    struct GameModes {
+        static let regular = "Regular"
+        static let regularHelp = "Reg Force Touch/Long Press Help"
+        static let team = "Team Mode"
+        static let teamHelp = "Team Help"
+        static let mat = "Mat(t)"
+        static let matHelp = "Mat(t) Help"
+    }
+    let gameModes = [GameModes.regular, GameModes.regularHelp, GameModes.team, GameModes.teamHelp, GameModes.mat, GameModes.matHelp]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -43,21 +51,21 @@ class GameModeTableViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow, let dest = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NameGame") as? NameGameViewController else {
             return
         }
-        switch indexPath.row {
-        case 0:
+        switch gameModes[indexPath.row] {
+        case GameModes.regular:
             dest.learnModeIsOn = false
-        case 1:
+        case GameModes.regularHelp:
             dest.learnModeIsOn = true
-        case 2:
+        case GameModes.team:
             dest.nameGame = TeamModeNameGame()
             dest.learnModeIsOn = false
-        case 3:
+        case GameModes.teamHelp:
             dest.nameGame = TeamModeNameGame()
             dest.learnModeIsOn = true
-        case 4:
+        case GameModes.mat:
             dest.nameGame = MattNameGame()
             dest.learnModeIsOn = false
-        case 5:
+        case GameModes.matHelp:
             dest.nameGame = MattNameGame()
             dest.learnModeIsOn = true
         default:

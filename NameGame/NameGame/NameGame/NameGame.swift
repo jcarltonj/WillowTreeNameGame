@@ -35,6 +35,7 @@ class NameGame {
     func loadGameData(completion: @escaping ([Person]) -> Void ) {
         peopleManager.getPeople { (people) in
             self.setupNewTurn()
+            completion(people)
         }
     }
     //Function that can be overriden to pick different base lists

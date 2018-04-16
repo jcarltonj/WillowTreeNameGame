@@ -20,6 +20,7 @@
 		FC8D2A442082ED68007D930D /* GameModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A432082ED68007D930D /* GameModeTableViewController.swift */; };
 		FC8D2A462082F166007D930D /* NameGameTeamMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A452082F166007D930D /* NameGameTeamMode.swift */; };
 		FC8D2A4820830170007D930D /* MattNameGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A4720830170007D930D /* MattNameGame.swift */; };
+		FC8D2A4B2084227D007D930D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FC8D2A4A2084227D007D930D /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FC8D2A432082ED68007D930D /* GameModeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameModeTableViewController.swift; path = ViewControllers/GameModeTableViewController.swift; sourceTree = "<group>"; };
 		FC8D2A452082F166007D930D /* NameGameTeamMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGameTeamMode.swift; sourceTree = "<group>"; };
 		FC8D2A4720830170007D930D /* MattNameGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MattNameGame.swift; sourceTree = "<group>"; };
+		FC8D2A4A2084227D007D930D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				EC6A1ABD1C8F6E5A0071F529 /* Assets.xcassets */,
 				EC6A1AC21C8F6E5A0071F529 /* Info.plist */,
 				03909FDF1DDE4ACE00C701A0 /* LaunchScreen.storyboard */,
+				FC8D2A4A2084227D007D930D /* README.md */,
 			);
 			path = NameGame;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			files = (
 				03909FE01DDE4ACE00C701A0 /* LaunchScreen.storyboard in Resources */,
 				EC6A1ABE1C8F6E5A0071F529 /* Assets.xcassets in Resources */,
+				FC8D2A4B2084227D007D930D /* README.md in Resources */,
 				EC6A1ABC1C8F6E5A0071F529 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

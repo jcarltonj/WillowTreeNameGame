@@ -31,7 +31,7 @@ class NameGameViewController: UIViewController {
         configureSubviews(orientation)
         setupPeekPop()
         nameGame.delegate = self
-        nameGame.loadGameData { (people) in return } //don't need to do anything with this data now as it is stored in the cache
+        nameGame.loadGameData { _ in } //don't need to do anything with this data now as it is stored in the cache
         
         
     }
