@@ -53,17 +53,17 @@ struct Person : Codable, Equatable, Hashable {
         let width: Int?
         
         //MARK: - Load Image
-        func getPersonImage() -> UIImage? {
+        func getPersonImage(completion: @escaping (UIImage) -> Void) {
             if let us = self.url, let u = URL(string: "https:"+us) {
-                do {
-                    let data = try Data(contentsOf: u)
-                    return UIImage(data: data)
-                }
-                catch {
-                    print(error)
+                let request = URLRequest(url: u)
+                PeopleManager.getData(request: request) { (data) in
+                    if let d = data, let image = UIImage(data: d) {
+                        completion(image)
+                        return
+                    }
+                    completion(UIImage(named: "Not Found")!)
                 }
             }
-            return UIImage(named: "Not Found")
         }
     }
 }

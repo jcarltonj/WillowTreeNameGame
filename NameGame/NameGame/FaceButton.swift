@@ -53,7 +53,12 @@ open class FaceButton: UIButton {
             self.imageView?.contentMode = .scaleAspectFill
             self.clipsToBounds = true
             self.contentMode = .scaleAspectFill
-            self.setImage(self.person?.headshot?.getPersonImage(), for: .normal)
+            self.person?.headshot?.getPersonImage(completion: { (image) in
+                DispatchQueue.main.async {
+                    self.setImage(image, for: .normal)
+                }
+                
+            })
         }
         
     }

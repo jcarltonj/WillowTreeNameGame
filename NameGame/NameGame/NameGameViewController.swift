@@ -26,7 +26,6 @@ class NameGameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let orientation: UIDeviceOrientation = self.view.frame.size.height > self.view.frame.size.width ? .portrait : .landscapeLeft
         configureSubviews(orientation)
         setupPeekPop()
@@ -104,6 +103,7 @@ extension NameGameViewController: NameGameDelegate {
         DispatchQueue.main.async {
             for button in self.imageButtons {
                 button.clearAnswer()
+                
                 button.setBackgroundImage(UIImage(named: "Loading"), for: .normal)
             }
         }

@@ -9,12 +9,10 @@
 import Foundation
 
 class TeamModeNameGame: NameGame {
-    lazy var teamModeList: [Person] = {
-        return peopleManager.localPeople.filter({ (p) -> Bool in
+    
+    override func setListOfPeopleToUse(allPeople: [Person]) {
+        self.listOfPeopleToUse = allPeople.filter({ (p) -> Bool in
             return p.jobTitle != nil
         })
-    }()
-    override func getListOfPeopleToUse() -> [Person] {
-        return teamModeList
     }
 }

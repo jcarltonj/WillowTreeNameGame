@@ -8,16 +8,15 @@
 
 import Foundation
 class MattNameGame: NameGame {
-    lazy var teamModeList: [Person] = {
-        return peopleManager.localPeople.filter({ (p) -> Bool in
+    
+    override func setListOfPeopleToUse(allPeople: [Person]) {
+        
+        self.listOfPeopleToUse = allPeople.filter({ (p) -> Bool in
             if let fN = p.firstName {
                 return fN.starts(with:"Mat")
             }
             return false
             
         })
-    }()
-    override func getListOfPeopleToUse() -> [Person] {
-        return teamModeList
     }
 }

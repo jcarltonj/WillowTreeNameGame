@@ -18,6 +18,8 @@ class NameGame {
     weak var delegate: NameGameDelegate?
     
     let peopleManager: PeopleManager = PeopleManager()
+    
+    var listOfPeopleToUse: [Person] = []
 
     let numberPeople = 6
     
@@ -34,18 +36,19 @@ class NameGame {
     // Load JSON data from API
     func loadGameData(completion: @escaping ([Person]) -> Void ) {
         peopleManager.getPeople { (people) in
+            self.setListOfPeopleToUse(allPeople: people)
             self.setupNewTurn()
             completion(people)
         }
     }
     //Function that can be overriden to pick different base lists
-    func getListOfPeopleToUse() -> [Person] {
-        return peopleManager.localPeople
+    func setListOfPeopleToUse(allPeople: [Person]) {
+        listOfPeopleToUse = allPeople
     }
     //Game to setup new turn and reload data
     @objc func setupNewTurn() {
         //Get 6 people
-        addPeopleToTurnFromList(list: getListOfPeopleToUse())
+        addPeopleToTurnFromList(list: listOfPeopleToUse)
         //Pick which will be correct
         selectAnswer()
         //Call setup for delegate
@@ -61,6 +64,9 @@ class NameGame {
     //Get 6 people
     func addPeopleToTurnFromList(list: [Person]) {
         //Use a set to avoid repeats
+        if list.count < 6 {
+            return
+        }
         var indexes = Set<Int>()
         currentTurnList = []
         //repeat until we have 6
