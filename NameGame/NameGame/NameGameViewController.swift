@@ -150,6 +150,7 @@ extension NameGameViewController: UIViewControllerPreviewingDelegate {
     func getViewControllerForPerson(person: Person?, image: UIImage?) -> UIViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PreviewPerson") as! PreviewPersonViewController
         vc.setupPerson(person: person, image: image)
+        
         return vc
         
     }
