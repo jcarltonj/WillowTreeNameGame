@@ -104,7 +104,7 @@ extension NameGameViewController: NameGameDelegate {
             for button in self.imageButtons {
                 button.clearAnswer()
                 
-                button.setBackgroundImage(UIImage(named: "Loading"), for: .normal)
+                button.setImage(UIImage(named: "Loading"), for: .normal)
             }
         }
     }

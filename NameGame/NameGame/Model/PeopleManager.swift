@@ -71,10 +71,17 @@ extension PeopleManager {
     static func getData(request: URLRequest, completion: @escaping (Data?) -> Void) {
         let dataTask = URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in
             if let r = urlResponse, let d = data {
-                let cached = CachedURLResponse(response: r, data: d)
-                URLCache.shared.storeCachedResponse(cached, for: request)
-                completion(d)
+                if let e = error {
+                    print(error)
+                }
+                else {
+                    let cached = CachedURLResponse(response: r, data: d)
+                    URLCache.shared.storeCachedResponse(cached, for: request)
+                    completion(d)
+                    return
+                }
             }
+            completion(nil)
         }
         URLCache.shared.getCachedResponse(for: dataTask) { (cResponse) in
             if let r = cResponse {
