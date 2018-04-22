@@ -72,7 +72,7 @@ extension PeopleManager {
         let dataTask = URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in
             if let r = urlResponse, let d = data {
                 if let e = error {
-                    print(error)
+                    print(e)
                 }
                 else {
                     let cached = CachedURLResponse(response: r, data: d)
