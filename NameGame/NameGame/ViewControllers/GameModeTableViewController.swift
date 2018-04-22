@@ -71,6 +71,7 @@ class GameModeTableViewController: UITableViewController {
         default:
             break
         }
+        dest.title = gameModes[indexPath.row]
         self.navigationController?.pushViewController(dest, animated: true)
     }
 

@@ -11,6 +11,71 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Settings-->
+        <scene sceneID="TwW-OR-k4K">
+            <objects>
+                <viewController title="Settings" id="kB1-So-WcU" customClass="SettingsViewController" customModule="NameGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AGR-V8-37e"/>
+                        <viewControllerLayoutGuide type="bottom" id="RaV-Yw-ffo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bte-zA-Vhh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ghv-s2-BZj">
+                                <rect key="frame" x="142" y="180" width="90" height="30"/>
+                                <state key="normal" title="Download All"/>
+                                <connections>
+                                    <action selector="downloadAll:" destination="kB1-So-WcU" eventType="touchUpInside" id="j9C-JE-aW1"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="d5j-Hx-Fea">
+                                <rect key="frame" x="16" y="250" width="343" height="2"/>
+                            </progressView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yCp-pP-z5N">
+                                <rect key="frame" x="150" y="40" width="75" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="LCC-v9-R0Y"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="valueWasChanged:" destination="kB1-So-WcU" eventType="editingChanged" id="Bmd-st-OFy"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdB-t8-r02">
+                                <rect key="frame" x="145" y="110" width="84" height="30"/>
+                                <state key="normal" title="Clear Cache"/>
+                                <connections>
+                                    <action selector="clearCache:" destination="kB1-So-WcU" eventType="touchUpInside" id="4cG-Ad-Yer"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bdB-t8-r02" firstAttribute="centerX" secondItem="bte-zA-Vhh" secondAttribute="centerX" id="7bR-An-k0d"/>
+                            <constraint firstItem="d5j-Hx-Fea" firstAttribute="trailing" secondItem="bte-zA-Vhh" secondAttribute="trailingMargin" id="9no-Bv-Ydg"/>
+                            <constraint firstItem="bdB-t8-r02" firstAttribute="top" secondItem="yCp-pP-z5N" secondAttribute="bottom" constant="40" id="KTt-V8-Pbw"/>
+                            <constraint firstItem="d5j-Hx-Fea" firstAttribute="top" secondItem="Ghv-s2-BZj" secondAttribute="bottom" constant="40" id="Ydq-oL-cwA"/>
+                            <constraint firstItem="d5j-Hx-Fea" firstAttribute="leading" secondItem="bte-zA-Vhh" secondAttribute="leadingMargin" id="fdC-Ef-ZSg"/>
+                            <constraint firstItem="yCp-pP-z5N" firstAttribute="centerX" secondItem="bte-zA-Vhh" secondAttribute="centerX" id="g4Q-9n-e8i"/>
+                            <constraint firstItem="Ghv-s2-BZj" firstAttribute="centerX" secondItem="bte-zA-Vhh" secondAttribute="centerX" id="jWk-Mg-f04"/>
+                            <constraint firstItem="d5j-Hx-Fea" firstAttribute="centerX" secondItem="bte-zA-Vhh" secondAttribute="centerX" id="juF-ac-LhR"/>
+                            <constraint firstItem="Ghv-s2-BZj" firstAttribute="top" secondItem="bdB-t8-r02" secondAttribute="bottom" constant="40" id="w6Q-M7-29b"/>
+                            <constraint firstItem="yCp-pP-z5N" firstAttribute="top" secondItem="AGR-V8-37e" secondAttribute="bottom" constant="40" id="zOh-jQ-gZj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="d5j-Hx-Fea" id="xU0-yO-yGH"/>
+                        <outlet property="timeTextView" destination="yCp-pP-z5N" id="2K9-Zg-rmU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vuD-ma-bA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2040.8" y="-320.68965517241384"/>
+        </scene>
         <!--Name Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -33,14 +98,14 @@
                                 <rect key="frame" x="16" y="84" width="343" height="573"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="EA9-A5-9wD" userLabel="Inner Stack View 1">
-                                        <rect key="frame" x="0.0" y="25.5" width="164" height="522"/>
+                                        <rect key="frame" x="0.0" y="121.5" width="164" height="330"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGv-0C-ewu" customClass="FaceButton" customModule="NameGame" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="164" height="164"/>
+                                                <rect key="frame" x="32" y="0.0" width="100" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="164" id="MKF-P3-pXG"/>
+                                                    <constraint firstAttribute="height" constant="100" id="MKF-P3-pXG"/>
                                                     <constraint firstAttribute="width" secondItem="FGv-0C-ewu" secondAttribute="height" multiplier="1:1" id="aBx-Yy-25R"/>
-                                                    <constraint firstAttribute="width" constant="164" id="dEP-G4-Auo"/>
+                                                    <constraint firstAttribute="width" constant="100" id="dEP-G4-Auo"/>
                                                 </constraints>
                                                 <state key="normal" title="Person 1"/>
                                                 <connections>
@@ -48,11 +113,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlO-si-bP2" customClass="FaceButton" customModule="NameGame" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="179" width="164" height="164"/>
+                                                <rect key="frame" x="32" y="115" width="100" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="164" id="5lH-mI-YjQ"/>
+                                                    <constraint firstAttribute="width" constant="100" id="5lH-mI-YjQ"/>
                                                     <constraint firstAttribute="width" secondItem="qlO-si-bP2" secondAttribute="height" multiplier="1:1" id="aiT-Qv-AU6"/>
-                                                    <constraint firstAttribute="height" constant="164" id="yiu-D2-1nR"/>
+                                                    <constraint firstAttribute="height" constant="100" id="yiu-D2-1nR"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="Person 2"/>
@@ -61,10 +126,10 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9V-c5-o1r" customClass="FaceButton" customModule="NameGame" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="358" width="164" height="164"/>
+                                                <rect key="frame" x="32" y="230" width="100" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="164" id="8Gh-UK-KKs"/>
-                                                    <constraint firstAttribute="height" constant="164" id="LM5-OC-zFJ"/>
+                                                    <constraint firstAttribute="width" constant="100" id="8Gh-UK-KKs"/>
+                                                    <constraint firstAttribute="height" constant="100" id="LM5-OC-zFJ"/>
                                                     <constraint firstAttribute="width" secondItem="m9V-c5-o1r" secondAttribute="height" multiplier="1:1" id="ZgB-UY-UAw"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -77,14 +142,14 @@
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9jZ-07-xma" userLabel="Inner Stack View 2">
-                                        <rect key="frame" x="179" y="25.5" width="164" height="522"/>
+                                        <rect key="frame" x="179" y="121.5" width="164" height="330"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKD-LA-aOV" customClass="FaceButton" customModule="NameGame" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="164" height="164"/>
+                                                <rect key="frame" x="32" y="0.0" width="100" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="164" id="Nqi-e1-Zg2"/>
+                                                    <constraint firstAttribute="width" constant="100" id="Nqi-e1-Zg2"/>
                                                     <constraint firstAttribute="width" secondItem="wKD-LA-aOV" secondAttribute="height" multiplier="1:1" id="jTy-xr-yVR"/>
-                                                    <constraint firstAttribute="height" constant="164" id="t0B-5H-aSg"/>
+                                                    <constraint firstAttribute="height" constant="100" id="t0B-5H-aSg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="Person 4"/>
@@ -93,11 +158,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sT1-JL-4jJ" customClass="FaceButton" customModule="NameGame" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="179" width="164" height="164"/>
+                                                <rect key="frame" x="32" y="115" width="100" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="sT1-JL-4jJ" secondAttribute="height" multiplier="1:1" id="a4I-eK-8ky"/>
-                                                    <constraint firstAttribute="height" constant="164" id="gAA-hE-GjS"/>
-                                                    <constraint firstAttribute="width" constant="164" id="hgU-Fw-cCg"/>
+                                                    <constraint firstAttribute="height" constant="100" id="gAA-hE-GjS"/>
+                                                    <constraint firstAttribute="width" constant="100" id="hgU-Fw-cCg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="Person 5"/>
@@ -106,11 +171,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljo-Aa-9vE" customClass="FaceButton" customModule="NameGame" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="358" width="164" height="164"/>
+                                                <rect key="frame" x="32" y="230" width="100" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ljo-Aa-9vE" secondAttribute="height" multiplier="1:1" id="Ndx-b5-Keu"/>
-                                                    <constraint firstAttribute="height" constant="164" id="YVu-4u-i09"/>
-                                                    <constraint firstAttribute="width" constant="164" id="cK5-fU-nbg"/>
+                                                    <constraint firstAttribute="height" constant="100" id="YVu-4u-i09"/>
+                                                    <constraint firstAttribute="width" constant="100" id="cK5-fU-nbg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="Person 6"/>
@@ -231,12 +296,12 @@
             </objects>
             <point key="canvasLocation" x="3087.1999999999998" y="468.21589205397305"/>
         </scene>
-        <!--Game Mode Table View Controller-->
+        <!--Game Modes-->
         <scene sceneID="HpM-ZI-GmQ">
             <objects>
                 <tableViewController id="xWS-ei-8bj" customClass="GameModeTableViewController" customModule="NameGame" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xYs-m9-PD0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -254,7 +319,13 @@
                             <outlet property="delegate" destination="xWS-ei-8bj" id="3RL-Yw-Jg8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="5nZ-dn-hcC"/>
+                    <navigationItem key="navigationItem" title="Game Modes" id="5nZ-dn-hcC">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="8xL-B2-Tkm">
+                            <connections>
+                                <segue destination="kB1-So-WcU" kind="show" id="wMf-84-GBD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpM-Df-TyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -265,8 +336,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wge-QX-DJh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N6X-bK-60S">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="N6X-bK-60S">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

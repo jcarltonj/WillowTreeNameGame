@@ -14,6 +14,7 @@
 		EC6A1ABC1C8F6E5A0071F529 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC6A1ABA1C8F6E5A0071F529 /* Main.storyboard */; };
 		EC6A1ABE1C8F6E5A0071F529 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6A1ABD1C8F6E5A0071F529 /* Assets.xcassets */; };
 		ECF50AB51C9331CA00C41A1D /* FaceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF50AB41C9331CA00C41A1D /* FaceButton.swift */; };
+		FC6B45B1208C2EC900B59EEA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6B45B0208C2EC900B59EEA /* SettingsViewController.swift */; };
 		FC8D2A3C208251FC007D930D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A3B208251FC007D930D /* Person.swift */; };
 		FC8D2A40208255FF007D930D /* PeopleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A3F208255FF007D930D /* PeopleManager.swift */; };
 		FC8D2A422082BACB007D930D /* PreviewPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D2A412082BACB007D930D /* PreviewPersonViewController.swift */; };
@@ -33,6 +34,7 @@
 		EC6A1ABD1C8F6E5A0071F529 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC6A1AC21C8F6E5A0071F529 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECF50AB41C9331CA00C41A1D /* FaceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceButton.swift; sourceTree = "<group>"; };
+		FC6B45B0208C2EC900B59EEA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FC8D2A3B208251FC007D930D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		FC8D2A3F208255FF007D930D /* PeopleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleManager.swift; sourceTree = "<group>"; };
 		FC8D2A412082BACB007D930D /* PreviewPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreviewPersonViewController.swift; path = ViewControllers/PreviewPersonViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				FC8D2A3E2082557E007D930D /* Model */,
 				0390A0101DDE529600C701A0 /* Views */,
 				EC6A1ABA1C8F6E5A0071F529 /* Main.storyboard */,
+				FC6B45B0208C2EC900B59EEA /* SettingsViewController.swift */,
 				FC8D2A432082ED68007D930D /* GameModeTableViewController.swift */,
 				EC6A1ABD1C8F6E5A0071F529 /* Assets.xcassets */,
 				EC6A1AC21C8F6E5A0071F529 /* Info.plist */,
@@ -191,6 +194,7 @@
 			files = (
 				FC8D2A3C208251FC007D930D /* Person.swift in Sources */,
 				EC6A1AB91C8F6E5A0071F529 /* NameGameViewController.swift in Sources */,
+				FC6B45B1208C2EC900B59EEA /* SettingsViewController.swift in Sources */,
 				EC6A1AB71C8F6E5A0071F529 /* AppDelegate.swift in Sources */,
 				03CE45611DD1302700ABF7FA /* NameGame.swift in Sources */,
 				FC8D2A40208255FF007D930D /* PeopleManager.swift in Sources */,

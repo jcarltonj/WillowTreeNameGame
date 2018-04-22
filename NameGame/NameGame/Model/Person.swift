@@ -61,6 +61,7 @@ struct Person : Codable, Equatable, Hashable {
                         completion(image)
                         return
                     }
+                    print(u)
                     completion(UIImage(named: "Not Found")!)
                 }
             }

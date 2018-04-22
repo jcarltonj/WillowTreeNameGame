@@ -15,6 +15,8 @@ protocol NameGameDelegate: class {
 
 class NameGame {
     
+    static let timeKey = "GameTime"
+    
     weak var delegate: NameGameDelegate?
     
     let peopleManager: PeopleManager = PeopleManager()
@@ -92,7 +94,12 @@ class NameGame {
                 //turn of ability to keep playing
                 canPlay = false
                 //wait 3 seconds until next turn
-                Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(setupNewTurn), userInfo: nil, repeats: false)
+                var time = 3.0
+                if let t = UserDefaults.standard.value(forKey: NameGame.timeKey) as? Double {
+                    time = t
+                }
+                
+                Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(setupNewTurn), userInfo: nil, repeats: false)
             }
             //return truth
             if ansBool {

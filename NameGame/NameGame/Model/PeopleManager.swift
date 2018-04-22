@@ -95,6 +95,9 @@ extension PeopleManager {
     static func clearCacheValue(request: URLRequest) {
         URLCache.shared.removeCachedResponse(for: request)
     }
+    static func clearCache() {
+        URLCache.shared.removeAllCachedResponses()
+    }
 }
 
 
