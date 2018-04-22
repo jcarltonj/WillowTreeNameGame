@@ -55,16 +55,21 @@ struct Person : Codable, Equatable, Hashable {
         //MARK: - Load Image
         func getPersonImage(completion: @escaping (UIImage) -> Void) {
             if let us = self.url, let u = URL(string: "https:"+us) {
+                //print(u)
                 let request = URLRequest(url: u)
                 PeopleManager.getData(request: request) { (data) in
                     if let d = data, let image = UIImage(data: d) {
                         completion(image)
                         return
                     }
-                    print(u)
+                    print("error url:"+u.absoluteString)
                     completion(UIImage(named: "Not Found")!)
                 }
             }
+            else {
+                completion(UIImage(named: "Not Found")!)
+            }
+            
         }
     }
 }

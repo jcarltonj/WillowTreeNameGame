@@ -43,15 +43,25 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func downloadAll(_ sender: UIButton) {
+        print(URLCache.shared.currentDiskUsage)
+        print(URLCache.shared.diskCapacity)
+        print(URLCache.shared.currentMemoryUsage)
+        print(URLCache.shared.memoryCapacity)
+        URLCache.shared.diskCapacity = 100000000 // enlarge cache
         peopleManager.getPeople { (people) in
-            let total:Float = Float(people.count)
+            var total:Float = Float(people.count)
             var count: Float = 0
             for person in people {
-                person.headshot?.getPersonImage { _ in
-                    DispatchQueue.main.async {
-                        count += 1
-                        self.progressBar.progress = count / total
+                if let headshot = person.headshot {
+                    headshot.getPersonImage { _ in
+                        DispatchQueue.main.async {
+                            count += 1
+                            self.progressBar.progress = count / total
+                        }
                     }
+                }
+                else {
+                    total -= 1
                 }
             }
         }

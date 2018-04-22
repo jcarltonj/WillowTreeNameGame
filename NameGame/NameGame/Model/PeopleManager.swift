@@ -70,7 +70,7 @@ extension PeopleManager {
     }
     static func getData(request: URLRequest, completion: @escaping (Data?) -> Void) {
         let dataTask = URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in
-            if let r = urlResponse, let d = data {
+            if let r = urlResponse as? HTTPURLResponse, let d = data, r.statusCode == 200 {
                 if let e = error {
                     print(e)
                 }

@@ -58,7 +58,6 @@ open class FaceButton: UIButton {
                     self.setImage(image, for: .normal)
                     completion()
                 }
-                
             })
         }
         
