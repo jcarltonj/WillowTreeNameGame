@@ -45,7 +45,7 @@ open class FaceButton: UIButton {
     }
 
     //MARK: - Person Helpers
-    func setPerson(person p: Person) {
+    func setPerson(person p: Person, completion: @escaping() -> Void ) {
         self.person = p
         //setup views
         DispatchQueue.main.async {
@@ -56,6 +56,7 @@ open class FaceButton: UIButton {
             self.person?.headshot?.getPersonImage(completion: { (image) in
                 DispatchQueue.main.async {
                     self.setImage(image, for: .normal)
+                    completion()
                 }
                 
             })

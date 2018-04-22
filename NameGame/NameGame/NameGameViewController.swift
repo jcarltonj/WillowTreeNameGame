@@ -17,6 +17,7 @@ class NameGameViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var imageButtons: [FaceButton]!
     
+    var activityIndicators: [UIActivityIndicatorView]!
     //Name Game instance
     var nameGame = NameGame()
     
@@ -27,6 +28,7 @@ class NameGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let orientation: UIDeviceOrientation = self.view.frame.size.height > self.view.frame.size.width ? .portrait : .landscapeLeft
+        setupActivityIndicators()
         configureSubviews(orientation)
         setupPeekPop()
         nameGame.delegate = self
@@ -93,7 +95,9 @@ extension NameGameViewController: NameGameDelegate {
         }
         //set image buttons to the remote images
         for i in 0..<imageButtons.count {
-            imageButtons[i].setPerson(person: nameGame.currentTurnList[i])
+            imageButtons[i].setPerson(person: nameGame.currentTurnList[i]) {
+                self.activityIndicators[i].stopAnimating()
+            }
         }
         //run completion handler
         completion()
@@ -101,10 +105,10 @@ extension NameGameViewController: NameGameDelegate {
     //MARK: - Helpers
     func setLoadingButtons() {
         DispatchQueue.main.async {
+            self.startAnimating()
             for button in self.imageButtons {
                 button.clearAnswer()
-                
-                button.setImage(UIImage(named: "Loading"), for: .normal)
+                button.setImage(nil, for: .normal)
             }
         }
     }
@@ -165,4 +169,30 @@ extension NameGameViewController: UIViewControllerPreviewingDelegate {
         }
     }
     
+}
+
+//MARK: - Activity Indicator
+extension NameGameViewController {
+    func setupActivityIndicators() {
+        activityIndicators = []
+        for i in 0..<imageButtons.count {
+            let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            //view.center = imageButtons[i].convert(imageButtons[i].center, to: self.view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            imageButtons[i].addSubview(view)
+            let xCenterConstraint = NSLayoutConstraint(item: imageButtons[i], attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+            self.imageButtons[i].addConstraint(xCenterConstraint)
+            
+            let yCenterConstraint = NSLayoutConstraint(item: imageButtons[i], attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0)
+            self.imageButtons[i].addConstraint(yCenterConstraint)
+            
+            view.hidesWhenStopped = true
+            activityIndicators.append(view)
+        }
+    }
+    func startAnimating() {
+        for aView in activityIndicators {
+            aView.startAnimating()
+        }
+    }
 }
